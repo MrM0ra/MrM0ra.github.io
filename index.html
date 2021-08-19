@@ -104,7 +104,7 @@
 						<div class="index">
 						</div>
 						<div class="specification-text">
-							<span id="expertise_title">
+							<span id="right_title">
 								<b>Object-Oriented Java</b>
 							</span>
 							<div>
@@ -119,7 +119,7 @@
 					<div class="specification-text-container">
 						<div class="index"></div>
 						<div class="specification-text">
-							<span id="expertise_title">
+							<span id="right_title">
 								<b>Object-Oriented C#</b>
 							</span>
 							<div>
@@ -134,7 +134,7 @@
 					<div class="specification-text-container">
 						<div class="index"></div>
 						<div class="specification-text">
-							<span id="expertise_title">
+							<span id="right_title">
 								<b>python</b>
 							</span>
 							<div>
@@ -149,7 +149,7 @@
 					<div class="specification-text-container">
 						<div class="index"></div>
 						<div class="specification-text">
-							<span id="expertise_title">
+							<span id="right_title">
 								<b>sql</b>
 							</span>
 							<div>
@@ -164,7 +164,7 @@
 					<div class="specification-text-container">
 						<div class="index"></div>
 						<div class="specification-text">
-							<span id="expertise_title">
+							<span id="right_title">
 								<b>react js</b>
 							</span>
 							<div>
@@ -204,7 +204,7 @@
 		<div class="right-side-text-pair">
 			<div class="right-side-container">
 				<div class="skill-container">
-					<li>
+					<li onclick="openModal('You clicked on: Java skill')">
 						<span id="right-side-subtitle">
 							<b>java</b>
 						</span>
@@ -212,7 +212,7 @@
 							<span class="java"></span>
 						</span>
 					</li>
-					<li>
+					<li onclick="openModal('You clicked on: C# skill')">
 						<span id="right-side-subtitle">
 							<b>c#</b>
 						</span>
@@ -220,7 +220,7 @@
 							<span class="c-sharp"></span>
 						</span>
 					</li>
-					<li>
+					<li onclick="openModal('You clicked on: python skill')">
 						<span id="right-side-subtitle">
 							<b>python</b>
 						</span>
@@ -228,7 +228,7 @@
 							<span class="python"></span>
 						</span>
 					</li>
-					<li>
+					<li onclick="openModal('You clicked on: javascript skill')">
 						<span id="right-side-subtitle">
 							<b>javascript</b>
 						</span>
@@ -236,7 +236,7 @@
 							<span class="js"></span>
 						</span>
 					</li>
-					<li>
+					<li onclick="openModal('You clicked on: illustrator skill')">
 						<span id="right-side-subtitle">
 							<b>illustrator</b>
 						</span>
@@ -248,5 +248,14 @@
 			</div>
 		</div>
 	</section>
+	<!-- The Modal -->
+	<div id="modal" class="modal">
+		<!-- Modal content -->
+  		<div class="modal-content">
+	    	<span class="close">&times;</span>
+    		<p id="modal_text">Some text in the Modal..</p>
+  		</div>
+	</div>
+	<script src="static/js/modal.js"></script>
 </body>
 </html>
