@@ -16,41 +16,41 @@ a{
 	color: white;
 	text-decoration: none;
 }
-h3{
-
+.main-container{
+	width: 100vw;
 }
 .smallest{
 	font-size: 70%;
 }
 .left-side{
 	background-color: #2A2D2C;
-	width: 32%;
+	width: 30%;
 	display: flex;
 	justify-content: center;
 	padding-top: 10%;
 }
 .left-side-text-pair{
 	background-color: #292A2A;
-	width: 32%;
+	width: 30%;
 	justify-content: flex-start;
 }
 .left-side-text-odd{
 	background-color: #2A2D2C;
-	width: 32%;
+	width: 30%;
 	justify-content: flex-start;	
 }
 .right-side{
 	background-color: #2C2F2E;
-	width: 68%;
+	width: 70%;
 	padding-top: 13%;
 }
 .right-side-text-pair{
 	background-color: #2A2D2C;
-	width: 68%;
+	width: 70%;
 }
 .right-side-text-odd{
 	background-color: #2C2F2E;
-	width: 68%;	
+	width: 70%;	
 }
 .right-side-container{
 	padding: 9%;
