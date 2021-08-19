@@ -1,0 +1,264 @@
+*{
+	list-style: none;
+	padding: 0;
+}
+html{
+	scroll-behavior: smooth;
+}
+body {
+	margin: 0;
+	counter-reset: section;
+}
+section{
+	display: flex;
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+h3{
+
+}
+.smallest{
+	font-size: 70%;
+}
+.left-side{
+	background-color: #2A2D2C;
+	width: 32%;
+	display: flex;
+	justify-content: center;
+	padding-top: 10%;
+}
+.left-side-text-pair{
+	background-color: #292A2A;
+	width: 32%;
+	justify-content: flex-start;
+}
+.left-side-text-odd{
+	background-color: #2A2D2C;
+	width: 32%;
+	justify-content: flex-start;	
+}
+.right-side{
+	background-color: #2C2F2E;
+	width: 68%;
+	padding-top: 13%;
+}
+.right-side-text-pair{
+	background-color: #2A2D2C;
+	width: 68%;
+}
+.right-side-text-odd{
+	background-color: #2C2F2E;
+	width: 68%;	
+}
+.right-side-container{
+	padding: 9%;
+}
+.avatar-container{
+	width: 55%;
+	height: 45%;
+	justify-content: center;
+	align-items: center;
+}
+.avatar-picture{
+	width: 100%;
+	height: 100%;
+	min-width: 170px;
+}
+.full-name{
+	margin-left: 10%;
+}
+.first-word{
+	text-transform: lowercase;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 400%;
+	color: #a4a5a6;
+}
+.second-word{
+	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
+	font-weight: 800;
+	font-size: 500%;
+	color: #e0a80d;
+}
+.role-icons{
+	display: flex;
+	align-items: baseline;
+	width: 100%;
+	margin-top: 1%;
+}
+.role-icons div{
+	margin-left: 10%;
+}
+.role{
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 125%;
+	color: #a4a5a6;	
+}
+.icons li{
+	display: inline;
+	box-shadow: 0px 0px 10px rgb(62,65,64);
+}
+.hr-span{
+	margin-left: 10%;
+	width: 80%;
+	opacity: 15%;
+	margin-top: 15%;
+}
+.contact-info, .left-side-text{
+	margin-left: 10%;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 90%;
+	display: flex;
+	margin-bottom: 8%;
+	color: #a4a5a6;
+}
+.contact-info div{
+	padding-right: 5%;
+}
+.left-side-text{
+	display: grid;
+	justify-content: right;
+	padding-right: 20%;
+	padding-top: 20%;
+}
+#right-side-title{
+	text-transform: uppercase;
+	text-align: right;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 130%;
+	margin-bottom: 10%;
+	color: #a4a5a6;
+}
+#right-side-subtitle{
+	text-transform: uppercase;
+	text-align: right;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 80%;
+	margin-bottom: 10%;
+	color: #a4a5a6;
+}
+.specification-text{
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 350;
+	font-size: 125%;
+	color: #a4a5a6;
+}
+.specification-text-container{
+	padding: 9%;
+	display: flex;
+	align-items: baseline;
+}
+.expertise-container{
+	margin-left: 5%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+  	grid-gap: 3px;
+  	grid-auto-rows: minmax(100px, auto);
+}
+.individual-xpertise{
+	display: grid;
+}
+.index::before{
+	counter-increment: section;
+	content: "0" counter(section) ""; 
+}
+.index{
+	margin-right: 5%;
+	font-family: 'Lato', sans-serif;
+	font-weight: 800;
+	font-size: 110%;
+	color: #e0a80d;
+}
+#right_title{
+	text-transform: uppercase;
+	font-size: 80%;
+}
+.skill-container{
+	width: 80%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+  	grid-gap: 10%;
+  	grid-auto-rows: minmax(100px, auto);
+}
+.bar{
+	background: #404242;
+	display: block;
+	height: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 3px;
+	overflow: hidden;
+	box-shadow: 0 0 10px #e0a80d;
+}
+.bar span{
+	height: 5px;
+	float: left;
+	background: #e0a80d;
+}
+.java{
+	width: 90%;
+	animation: java 2s;
+}
+@keyframes java{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 90%;
+	}
+}
+.c-sharp{
+	width: 60%;
+	animation: c-sharp 2s;
+}
+@keyframes c-sharp{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 60%;
+	}
+}
+.python{
+	width: 80%;
+	animation: python 2s;
+}
+@keyframes python{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 80%;
+	}
+}
+.js{
+	width: 50%;
+	animation: js 2S;
+}
+@keyframes js{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 50%;
+	}
+}
+
+.ilus{
+	width: 40%;
+	animation: ill 2S;
+}
+@keyframes ill{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 40%;
+	}
+}
