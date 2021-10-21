@@ -8,7 +8,7 @@ export const MessageApp = (props) => {
     }
 
     return(
-        <div>
+        <div style={{display: 'grid'}}>
             {renderMessages()}
         </div>
     );

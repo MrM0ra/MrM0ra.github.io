@@ -15,6 +15,7 @@ export const Chat = (props) => {
         event.preventDefault();
         setMessages((prev) => [...prev, newMessage]);
         setNewMessage({});
+        document.querySelector('#message').value = '';
     }
 
     return(
@@ -27,7 +28,7 @@ export const Chat = (props) => {
             </div>
             <div>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" onChange={handleChange}/>
+                    <input type="text" id="message" onChange={handleChange}/>
                     <input type="submit" />
                 </form>
             </div>

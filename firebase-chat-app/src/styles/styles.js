@@ -26,4 +26,13 @@ export const styles = {
         fontFamily: 'sans-serif',
         background: '#301b3f'
     },
+    messageBubble: {
+        borderRadius: 5,
+        backgroundColor: 'greenblue',
+        border: '1px solid',
+        display: 'inline-block',
+        margin: 5,
+        width: 'fit-content',
+        padding: 5
+    },
 };
