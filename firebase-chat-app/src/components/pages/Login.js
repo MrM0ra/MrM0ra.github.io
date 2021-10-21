@@ -27,7 +27,7 @@ export const Login = (props) => {
     return(
         <div /*style={styles.body}*/>
             <div /*style={styles.box}*/>
-                <form onSubmit={handleSubmit} autocomplete="off">
+                <form onSubmit={handleSubmit} autoComplete="off">
                     <span>Username</span>
                     <input onChange={handleChangeUserName} id='username-input'/>
                     <span>Password</span>

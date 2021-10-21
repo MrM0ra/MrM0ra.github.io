@@ -1,11 +1,36 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {UserContext} from '../../context/UserContext';
+import {MessageApp} from '../container/MessageApp';
 
 export const Chat = (props) => {
     const {userName} = useContext(UserContext);
+    const [newMessage, setNewMessage] = useState({});
+    const handleChange = (event) =>{
+        event.preventDefault();
+        setNewMessage({owner: userName, msg: event.target.value });
+    }
+
+    const [messages, setMessages] = useState([]);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setMessages((prev) => [...prev, newMessage]);
+        setNewMessage({});
+    }
+
     return(
         <div>
-            <h1>Hola {userName}!</h1>
+            <div>
+                <h1>Hola {userName}!</h1>
+            </div>
+            <div>
+                <MessageApp user={userName} messages={messages}/>
+            </div>
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" onChange={handleChange}/>
+                    <input type="submit" />
+                </form>
+            </div>
         </div>
     );
 }
