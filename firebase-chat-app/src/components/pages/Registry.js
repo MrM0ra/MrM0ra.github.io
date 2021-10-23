@@ -8,6 +8,7 @@ export const Registry = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.history.push("/chat");
+        //Aquise agregan los usuarios al firebase con user, password y id: uuid.v1()
     }
 
     const handleChangeUserName = (event) => {

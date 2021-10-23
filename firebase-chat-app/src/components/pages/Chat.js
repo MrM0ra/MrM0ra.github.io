@@ -1,13 +1,14 @@
 import React, {useContext, useState} from "react";
 import {UserContext} from '../../context/UserContext';
 import {MessageApp} from '../container/MessageApp';
+import * as uuid from 'uuid';
 
 export const Chat = (props) => {
     const {userName} = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
     const handleChange = (event) =>{
         event.preventDefault();
-        setNewMessage({owner: userName, msg: event.target.value });
+        setNewMessage({id: uuid.v1(), owner: userName, msg: event.target.value });
     }
 
     const [messages, setMessages] = useState([]);

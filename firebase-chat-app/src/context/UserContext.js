@@ -5,7 +5,6 @@ export const UserContext = createContext();
 export const AuthProvider =({children}) => {
     const [userName, setUserName] = useState('');
     const [userPwd, setUserPwd] = useState('');
-    //const [messages, setMessages] = useState([]);
     
     const changeUserName = (arg) => {
         setUserName(arg);
@@ -15,14 +14,8 @@ export const AuthProvider =({children}) => {
         setUserPwd(arg);
     }
 
-    /*const editMessages = (arg) => {
-        let msgs = [...messages];
-        msgs.push(arg);
-        setMessages(msgs);
-    }*/
-
     return (
-        <UserContext.Provider value={{userName, userPwd, /*messages,*/ changeUserName, changePwd, /*editMessages*/}}>
+        <UserContext.Provider value={{userName, userPwd, changeUserName, changePwd}}>
             {children}
         </UserContext.Provider>
     )
