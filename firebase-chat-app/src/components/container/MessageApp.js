@@ -4,7 +4,7 @@ import {MessageDisplayer} from '../container/MessagesDisplayer';
 export const MessageApp = (props) => {
 
     const renderMessages = () => {
-        return props.messages.map( (msg, index) => <MessageDisplayer key={index} msg={msg}/>);
+        return props.messages.map( (msg, index) => <MessageDisplayer deleteMessage={props.deleteMessage} key={index} msg={msg}/>);
     }
 
     return(

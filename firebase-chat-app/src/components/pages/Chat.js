@@ -8,7 +8,7 @@ export const Chat = (props) => {
     const [newMessage, setNewMessage] = useState({});
     const handleChange = (event) =>{
         event.preventDefault();
-        setNewMessage({id: uuid.v1(), owner: userName, msg: event.target.value });
+        setNewMessage({id: uuid.v1(), owner: userName, msg: event.target.value, responses: []});
     }
 
     const [messages, setMessages] = useState([]);
@@ -19,16 +19,22 @@ export const Chat = (props) => {
         document.querySelector('#message').value = '';
     }
 
+    const deleteMessage = (id) => {
+        setMessages((prev)=>{
+            return prev.filter(msg => msg['id']!==id);
+        });
+    }
+
     return(
         <div>
             <div>
                 <h1>Hola {userName}!</h1>
             </div>
             <div>
-                <MessageApp user={userName} messages={messages}/>
+                <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/>
             </div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} autoComplete="off">
                     <input type="text" id="message" onChange={handleChange}/>
                     <input type="submit" />
                 </form>
