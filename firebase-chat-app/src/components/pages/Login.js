@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
 import {UserContext} from '../../context/UserContext';
+import { checkExistingUser } from '../../Firebase';
 //import {styles} from '../../styles/styles';
 
 export const Login = (props) => {
 
-    const {changeUserName, changePwd} = useContext(UserContext);
+    const {userName, changeUserName, changePwd} = useContext(UserContext);
 
     const handleChangeUserName = (event) => {
         changeUserName(event.target.value);
+    }
+
+    const checkExistence = () => {
+        console.log(checkExistingUser(userName));
+        
+        //userName
     }
 
     const handleChangePwd = ({target}) => {
@@ -16,6 +23,7 @@ export const Login = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        checkExistence();
         props.history.push("/chat");
     }
 

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 //import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 //import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
@@ -17,6 +17,9 @@ const firebaseApp = ({
 const app = initializeApp(firebaseApp);
 const db = getDatabase();
 
+const dbUsers = ref(db, "/users");
+const dbMsg = ref(db, "/messages");
+
 const addUser = (userName, pwd, userid) => {
     set(ref(db, 'users/'+ userid), {
         userId: userid,
@@ -26,8 +29,6 @@ const addUser = (userName, pwd, userid) => {
 }
 
 const addMessage = (msg, userID) => {
-    console.log(msg);
-    console.log(userID);
     set(ref(db, 'messages/'+userID+'/'+msg.id), {
         msgID: msg.id,
         owner: msg.owner,
@@ -41,4 +42,20 @@ const editMessage = (msgID, userID, nesMSG) => {
     //Verificar si el usuario tiene ese mensaje
 }
 
-export { db, addUser, addMessage, editMessage };
+const checkExistingUser = (username) => {    
+    get(child(ref(db), 'users/')).then((snapshot) => {
+        if (snapshot.exists()) {
+            let users = snapshot.val();
+            console.log(Object.keys(users));
+            let flag;
+            //users.map(user => user.userName === username ? flag=true : '');
+            return flag;
+        } else {
+            return false;
+        }
+    }).catch( error => {
+        console.error(error);
+    });
+}
+
+export { db, addUser, addMessage, editMessage, checkExistingUser };
