@@ -37,5 +37,5 @@ export const Login = (props) => {
                 </form>
             </div>
         </div>
-    )
+    );
 }

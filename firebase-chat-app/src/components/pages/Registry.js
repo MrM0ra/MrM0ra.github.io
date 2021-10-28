@@ -1,14 +1,15 @@
 import React, {useContext} from 'react';
 import {UserContext} from '../../context/UserContext';
+import {addUser} from '../../Firebase';
 
 export const Registry = (props) => {
 
-    const {changeUserName, changePwd} = useContext(UserContext);
+    const {changeUserName, changePwd, userName, userPwd} = useContext(UserContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        addUser(userName, userPwd);
         props.history.push("/chat");
-        //Aquise agregan los usuarios al firebase con user, password y id: uuid.v1()
     }
 
     const handleChangeUserName = (event) => {
