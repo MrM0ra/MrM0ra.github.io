@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from 'firebase/database';
 //import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import * as uuid from 'uuid';
+//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 const firebaseApp = ({
     apiKey: "AIzaSyDeGOpvl_DKZdh1vCC3KjVaDjo4E1jWWRM",
@@ -18,8 +17,7 @@ const firebaseApp = ({
 const app = initializeApp(firebaseApp);
 const db = getDatabase();
 
-const addUser = (userName, pwd) => {
-    let userid = uuid.v1();
+const addUser = (userName, pwd, userid) => {
     set(ref(db, 'users/'+ userid), {
         userId: userid,
         userName: userName,
@@ -27,13 +25,20 @@ const addUser = (userName, pwd) => {
     });
 }
 
-const addMessage = (userName, pwd) => {
-    let userid = uuid.v1();
-    set(ref(db, 'users/'+ userid), {
-        userId: userid,
-        userName: userName,
-        password: pwd
+const addMessage = (msg, userID) => {
+    console.log(msg);
+    console.log(userID);
+    set(ref(db, 'messages/'+userID+'/'+msg.id), {
+        msgID: msg.id,
+        owner: msg.owner,
+        ownerID: msg.ownerId,
+        msg: msg.msg,
+        responses: msg.responses
     });
 }
 
-export { db, addUser, addMessage };
+const editMessage = (msgID, userID, nesMSG) => {
+    //Verificar si el usuario tiene ese mensaje
+}
+
+export { db, addUser, addMessage, editMessage };

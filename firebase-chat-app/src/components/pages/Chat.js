@@ -2,19 +2,21 @@ import React, {useContext, useState} from "react";
 import {UserContext} from '../../context/UserContext';
 import {MessageApp} from '../container/MessageApp';
 import * as uuid from 'uuid';
+import {addMessage} from '../../Firebase';
 
 export const Chat = (props) => {
-    const {userName} = useContext(UserContext);
+    const {userName, userID} = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
     const handleChange = (event) =>{
         event.preventDefault();
-        setNewMessage({id: uuid.v1(), owner: userName, msg: event.target.value, responses: []});
+        setNewMessage({ownerId: userID, id: uuid.v1(), owner: userName, msg: event.target.value, responses: []});
     }
 
     const [messages, setMessages] = useState([]);
     const handleSubmit = (event) => {
         event.preventDefault();
         setMessages((prev) => [...prev, newMessage]);
+        addMessage(newMessage, userID);
         setNewMessage({});
         document.querySelector('#message').value = '';
     }

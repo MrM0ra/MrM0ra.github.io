@@ -1,14 +1,17 @@
 import React, {useContext} from 'react';
 import {UserContext} from '../../context/UserContext';
 import {addUser} from '../../Firebase';
+import * as uuid from 'uuid';
 
 export const Registry = (props) => {
 
-    const {changeUserName, changePwd, userName, userPwd} = useContext(UserContext);
+    const {changeUserName, changePwd, userName, userPwd, changeUserID} = useContext(UserContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addUser(userName, userPwd);
+        let userid = uuid.v1();
+        changeUserID(userid);
+        addUser(userName, userPwd, userid);
         props.history.push("/chat");
     }
 
