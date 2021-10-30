@@ -7,6 +7,7 @@ import {addMessage} from '../../Firebase';
 export const Chat = (props) => {
     const {userName, userID} = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
+    
     const handleChange = (event) =>{
         event.preventDefault();
         setNewMessage({ownerId: userID, id: uuid.v1(), owner: userName, msg: event.target.value, responses: []});

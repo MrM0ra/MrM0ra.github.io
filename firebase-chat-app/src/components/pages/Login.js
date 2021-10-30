@@ -5,16 +5,19 @@ import { checkExistingUser } from '../../Firebase';
 
 export const Login = (props) => {
 
-    const {userName, changeUserName, changePwd} = useContext(UserContext);
+    const {userName, changeUserName, changePwd, changeAuth, changeUserID} = useContext(UserContext);
 
     const handleChangeUserName = (event) => {
         changeUserName(event.target.value);
     }
 
     const checkExistence = () => {
-        console.log(checkExistingUser(userName));
-        
-        //userName
+        checkExistingUser(userName).then(res => {
+            if(res!==false){
+                changeAuth(true);
+                changeUserID(res);
+            }
+        });
     }
 
     const handleChangePwd = ({target}) => {

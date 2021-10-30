@@ -1,7 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
-//import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 const firebaseApp = ({
     apiKey: "AIzaSyDeGOpvl_DKZdh1vCC3KjVaDjo4E1jWWRM",
@@ -17,9 +15,6 @@ const firebaseApp = ({
 const app = initializeApp(firebaseApp);
 const db = getDatabase();
 
-const dbUsers = ref(db, "/users");
-const dbMsg = ref(db, "/messages");
-
 const addUser = (userName, pwd, userid) => {
     set(ref(db, 'users/'+ userid), {
         userId: userid,
@@ -29,6 +24,7 @@ const addUser = (userName, pwd, userid) => {
 }
 
 const addMessage = (msg, userID) => {
+    console.log(msg.ownerId);
     set(ref(db, 'messages/'+userID+'/'+msg.id), {
         msgID: msg.id,
         owner: msg.owner,
@@ -43,19 +39,24 @@ const editMessage = (msgID, userID, nesMSG) => {
 }
 
 const checkExistingUser = (username) => {    
-    get(child(ref(db), 'users/')).then((snapshot) => {
+    const uid = get(child(ref(db), 'users/')).then((snapshot) => {
         if (snapshot.exists()) {
             let users = snapshot.val();
-            console.log(Object.keys(users));
-            let flag;
-            //users.map(user => user.userName === username ? flag=true : '');
-            return flag;
+            const keys = Object.keys(users);
+            let flag=false;
+            for(let i=0;i<keys.length; i++){
+                flag = users[keys[i]].userName === username ? true : false;
+                if (flag){
+                    return users[keys[i]].userId;
+                }
+            }
         } else {
             return false;
         }
     }).catch( error => {
         console.error(error);
     });
+    return uid;
 }
 
 export { db, addUser, addMessage, editMessage, checkExistingUser };

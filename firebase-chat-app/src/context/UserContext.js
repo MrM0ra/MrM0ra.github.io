@@ -20,8 +20,12 @@ export const AuthProvider =({children}) => {
         setUserID(arg);
     }
 
+    const changeAuth = (arg) => {
+        setAuth(arg);
+    }
+
     return (
-        <UserContext.Provider value={{auth, setAuth, userName, userPwd, changeUserName, changePwd, userID, changeUserID}}>
+        <UserContext.Provider value={{auth, changeAuth, userName, userPwd, changeUserName, changePwd, userID, changeUserID}}>
             {children}
         </UserContext.Provider>
     )
