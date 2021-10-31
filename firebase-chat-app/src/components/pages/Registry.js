@@ -24,16 +24,14 @@ export const Registry = (props) => {
     }
 
     return (
-        <div /*style={styles.body}*/>
-            <div /*style={styles.box}*/>
-                <form onSubmit={handleSubmit} autocomplete="off">
-                    <span>Username</span>
-                    <input onChange={handleChangeUserName} id='username-input'/>
-                    <span>Password</span>
-                    <input onChange={handleChangePwd} type="password" id='pwd-input'/>
-                    <input type="submit" value="SignIng"/>
-                </form>
-            </div>
+        <div style={{display: 'table-caption'}}>
+            <form onSubmit={handleSubmit} autocomplete="off">
+                <span>Username</span>
+                <input onChange={handleChangeUserName} id='username-input'/>
+                <span>Password</span>
+                <input onChange={handleChangePwd} type="password" id='pwd-input'/>
+                <input type="submit" value="SignIng"/>
+            </form>
         </div>
     );
 

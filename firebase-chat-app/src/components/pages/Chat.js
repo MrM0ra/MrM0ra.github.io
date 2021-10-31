@@ -5,7 +5,7 @@ import * as uuid from 'uuid';
 import {addMessage} from '../../Firebase';
 
 export const Chat = (props) => {
-    const {userName, userID} = useContext(UserContext);
+    const {userName, userID, changeUserName, changeAuth } = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
     
     const handleChange = (event) =>{
@@ -28,18 +28,25 @@ export const Chat = (props) => {
         });
     }
 
+    const logout= () => {
+        changeUserName('');
+        changeAuth(false);
+        props.history.push("/");
+    }
+
     return(
         <div>
             <div>
-                <h1>Hola {userName}!</h1>
+                <h1>Bienvenido al chat mi socio {userName}!</h1>
             </div>
             <div>
                 <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/>
             </div>
-            <div>
+            <div style={{display: 'table-caption'}}>
                 <form onSubmit={handleSubmit} autoComplete="off">
                     <input type="text" id="message" onChange={handleChange}/>
                     <input type="submit" />
+                    <input type="button" value="logout" onClick={logout}/>
                 </form>
             </div>
         </div>
