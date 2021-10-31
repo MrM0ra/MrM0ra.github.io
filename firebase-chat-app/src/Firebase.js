@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, child, update } from 'firebase/database';
+import * as Crypto from 'crypto-js';
+
+const generateSha256 = (pwd) => {
+    return Crypto.SHA256(pwd);
+}
 
 const firebaseApp = ({
     apiKey: "AIzaSyDeGOpvl_DKZdh1vCC3KjVaDjo4E1jWWRM",
@@ -16,10 +21,13 @@ const app = initializeApp(firebaseApp);
 const db = getDatabase();
 
 const addUser = (userName, pwd, userid) => {
+    console.log("a hashearles");
+    const hashedPwd = generateSha256(pwd);
+    console.log(hashedPwd);
     set(ref(db, 'users/'+ userid), {
         userId: userid,
         userName: userName,
-        password: pwd
+        password: hashedPwd.toString()
     });
 }
 
@@ -38,7 +46,7 @@ const editMessage = (msgID, userID, nesMSG) => {
     //Verificar si el usuario tiene ese mensaje
 }
 
-const checkExistingUser = (username) => {    
+const validateCredentials = (username, userPwd) => {    
     const uid = get(child(ref(db), 'users/')).then((snapshot) => {
         if (snapshot.exists()) {
             let users = snapshot.val();
@@ -47,9 +55,16 @@ const checkExistingUser = (username) => {
             for(let i=0;i<keys.length; i++){
                 flag = users[keys[i]].userName === username ? true : false;
                 if (flag){
-                    return users[keys[i]].userId;
+                    flag = users[keys[i]].password === generateSha256(userPwd).toString() ? true : false;
+                    console.log(`${users[keys[i]].password} : ${generateSha256(userPwd).toString()}`)
+                    if(flag){
+                        return users[keys[i]].userId;
+                    }else{
+                        return false;
+                    }
                 }
             }
+            return false;
         } else {
             return false;
         }
@@ -59,4 +74,4 @@ const checkExistingUser = (username) => {
     return uid;
 }
 
-export { db, addUser, addMessage, editMessage, checkExistingUser };
+export { db, addUser, addMessage, editMessage, validateCredentials };
