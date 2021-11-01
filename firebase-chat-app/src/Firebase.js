@@ -21,9 +21,7 @@ const app = initializeApp(firebaseApp);
 const db = getDatabase();
 
 const addUser = (userName, pwd, userid) => {
-    console.log("a hashearles");
     const hashedPwd = generateSha256(pwd);
-    console.log(hashedPwd);
     set(ref(db, 'users/'+ userid), {
         userId: userid,
         userName: userName,
@@ -32,14 +30,24 @@ const addUser = (userName, pwd, userid) => {
 }
 
 const addMessage = (msg, userID) => {
-    console.log(msg.ownerId);
     set(ref(db, 'messages/'+userID+'/'+msg.id), {
-        msgID: msg.id,
+        ownerId: msg.ownerId,
+        id: msg.id,
         owner: msg.owner,
-        ownerID: msg.ownerId,
         msg: msg.msg,
         responses: msg.responses
     });
+}
+
+const getAllMessages = () => {
+    const messages = get(child(ref(db), 'messages/')).then( snapshot => {
+        if (snapshot.exists()) {
+            return snapshot.val();
+        }
+    }).catch( error => {
+        console.error(error);
+    });
+    return messages;
 }
 
 const editMessage = (msgID, userID, nesMSG) => {
@@ -56,7 +64,6 @@ const validateCredentials = (username, userPwd) => {
                 flag = users[keys[i]].userName === username ? true : false;
                 if (flag){
                     flag = users[keys[i]].password === generateSha256(userPwd).toString() ? true : false;
-                    console.log(`${users[keys[i]].password} : ${generateSha256(userPwd).toString()}`)
                     if(flag){
                         return users[keys[i]].userId;
                     }else{
@@ -74,4 +81,4 @@ const validateCredentials = (username, userPwd) => {
     return uid;
 }
 
-export { db, addUser, addMessage, editMessage, validateCredentials };
+export { db, addUser, addMessage, editMessage, validateCredentials, getAllMessages };

@@ -1,13 +1,13 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {UserContext} from '../../context/UserContext';
 import {MessageApp} from '../container/MessageApp';
 import * as uuid from 'uuid';
-import {addMessage} from '../../Firebase';
+import {addMessage, getAllMessages} from '../../Firebase';
 
 export const Chat = (props) => {
     const {userName, userID, changeUserName, changeAuth } = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
-    
+
     const handleChange = (event) =>{
         event.preventDefault();
         setNewMessage({ownerId: userID, id: uuid.v1(), owner: userName, msg: event.target.value, responses: []});
@@ -21,6 +21,23 @@ export const Chat = (props) => {
         setNewMessage({});
         document.querySelector('#message').value = '';
     }
+
+    useEffect( () => {
+        getAllMessages().then(res => {
+            if(res){
+                const keys = Object.keys(res);
+                let oldMessages =[];
+                for(let i=0;i<keys.length;i++){
+                    let msgs = res[keys[i]];
+                    const msgK = Object.keys(msgs);
+                    for(let j=0;j<msgK.length;j++){
+                        oldMessages.unshift(msgs[msgK[j]])
+                    }
+                }
+                setMessages((prev) => [...oldMessages]);
+            }
+        });
+    }, []);
 
     const deleteMessage = (id) => {
         setMessages((prev)=>{
@@ -37,7 +54,7 @@ export const Chat = (props) => {
     return(
         <div>
             <div>
-                <h1>Bienvenido al chat mi socio {userName}!</h1>
+                <h1>Bienvenid@ {userName}!</h1>
             </div>
             <div>
                 <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/>
