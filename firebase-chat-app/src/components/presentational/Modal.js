@@ -10,8 +10,6 @@ export const Modal = (props) => {
 
     const handleClick = () => {
         props.openModalAction({'visibility':'hidden'})
-        /*let msg = {'taskName':taskName, 'completed':completed}
-        props.editTask(task);*/
     }
 
     return (

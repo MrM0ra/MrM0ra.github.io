@@ -2,11 +2,14 @@ import React, {useContext, useState, useEffect} from "react";
 import {UserContext} from '../../context/UserContext';
 import {MessageApp} from '../container/MessageApp';
 import * as uuid from 'uuid';
-import {addMessage, getAllMessages} from '../../Firebase';
+import {addMessage, getAllMessages, deleteFBMessage } from '../../Firebase';
+import {LeftSideBar} from '../container/LeftSideBar';
 
 export const Chat = (props) => {
     const {userName, userID, changeUserName, changeAuth } = useContext(UserContext);
     const [newMessage, setNewMessage] = useState({});
+
+    const users=null;
 
     const handleChange = (event) =>{
         event.preventDefault();
@@ -40,6 +43,7 @@ export const Chat = (props) => {
     }, []);
 
     const deleteMessage = (id) => {
+        deleteFBMessage(id, userID);
         setMessages((prev)=>{
             return prev.filter(msg => msg['id']!==id);
         });
@@ -52,19 +56,22 @@ export const Chat = (props) => {
     }
 
     return(
-        <div>
+        <div style={{display: 'flex', justifyContent: 'left'}}>
+            <LeftSideBar participants={users}/>
             <div>
-                <h1>Bienvenid@ {userName}!</h1>
-            </div>
-            <div>
-                <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/>
-            </div>
-            <div style={{display: 'table-caption'}}>
-                <form onSubmit={handleSubmit} autoComplete="off">
-                    <input type="text" id="message" onChange={handleChange}/>
-                    <input type="submit" />
-                    <input type="button" value="logout" onClick={logout}/>
-                </form>
+                <div>
+                    <h1>Bienvenid@ {userName}!</h1>
+                    <div style={{height:'500px', width:'100%', overflow:'auto'}}>
+                        <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/> 
+                    </div>
+                </div>
+                <div style={{display: 'table-caption'}}>
+                    <form onSubmit={handleSubmit} autoComplete="off">
+                        <input type="text" id="message" onChange={handleChange}/>
+                        <input type="submit" />
+                        <input type="button" value="logout" onClick={logout}/>
+                    </form>
+                </div>
             </div>
         </div>
     );

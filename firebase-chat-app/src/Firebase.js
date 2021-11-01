@@ -29,17 +29,32 @@ const addUser = (userName, pwd, userid) => {
     });
 }
 
-const addMessage = (msg, userID) => {
-    set(ref(db, 'messages/'+userID+'/'+msg.id), {
+const addMessage = (msg, userId) => {
+    set(ref(db, 'messages/'+userId+'/'+msg.id), {
         ownerId: msg.ownerId,
         id: msg.id,
         owner: msg.owner,
         msg: msg.msg,
         responses: msg.responses
-    });
+    });    
+}
+
+const deleteFBMessage = (msgId, userID) => {
+    set(ref(db, 'messages/'+userID+'/'+msgId), null);
 }
 
 const getAllMessages = () => {
+    const messages = get(child(ref(db), 'messages/')).then( snapshot => {
+        if (snapshot.exists()) {
+            return snapshot.val();
+        }
+    }).catch( error => {
+        console.error(error);
+    });
+    return messages;
+}
+
+const getAllUsers = () => {
     const messages = get(child(ref(db), 'messages/')).then( snapshot => {
         if (snapshot.exists()) {
             return snapshot.val();
@@ -81,4 +96,4 @@ const validateCredentials = (username, userPwd) => {
     return uid;
 }
 
-export { db, addUser, addMessage, editMessage, validateCredentials, getAllMessages };
+export { db, addUser, addMessage, editMessage, validateCredentials, getAllMessages, deleteFBMessage };

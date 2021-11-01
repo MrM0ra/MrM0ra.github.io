@@ -1,5 +1,5 @@
 import React from "react";
-import {MessageDisplayer} from '../container/MessagesDisplayer';
+import {MessageDisplayer} from '../presentational/MessagesDisplayer';
 
 export const MessageApp = (props) => {
 
