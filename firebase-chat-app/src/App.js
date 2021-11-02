@@ -13,7 +13,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <BrowserRouter /*style={styles.body}*/>
+      <BrowserRouter basename={window.location.pathname || ''}/*style={styles.body}*/>
         <Switch>
           <Route exact path="/">
             <Redirect to="/login" />
