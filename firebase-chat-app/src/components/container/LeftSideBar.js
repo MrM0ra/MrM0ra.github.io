@@ -12,7 +12,7 @@ export const LeftSideBar = (props) => {
     }
 
     return (
-        <div style={{display: 'table-caption'}}>
+        <div style={{display: 'table-caption', backgroundColor: 'rgba(0,0,0,0.055)'}}>
             <div>
                 <div>
                     <span>Usuarios involucrados en el foro</span>

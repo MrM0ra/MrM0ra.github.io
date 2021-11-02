@@ -29,8 +29,8 @@ const addUser = (userName, pwd, userid) => {
     });
 }
 
-const addMessage = (msg, userId) => {
-    set(ref(db, 'messages/'+userId+'/'+msg.id), {
+const addMessage = (msg) => {
+    set(ref(db, 'messages/'+msg.id), {
         ownerId: msg.ownerId,
         id: msg.id,
         owner: msg.owner,

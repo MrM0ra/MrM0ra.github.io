@@ -20,7 +20,7 @@ export const Chat = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setMessages((prev) => [...prev, newMessage]);
-        addMessage(newMessage, userID);
+        addMessage(newMessage);
         setNewMessage({});
         document.querySelector('#message').value = '';
     }
@@ -60,7 +60,7 @@ export const Chat = (props) => {
             <LeftSideBar participants={users}/>
             <div>
                 <div>
-                    <h1>Bienvenid@ {userName}!</h1>
+                    <h1>Bienvenid@ al foro {userName}!</h1>
                     <div style={{height:'500px', width:'100%', overflow:'auto'}}>
                         <MessageApp user={userName} deleteMessage={deleteMessage} messages={messages}/> 
                     </div>
