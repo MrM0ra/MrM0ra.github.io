@@ -25,8 +25,6 @@ a{
 .left-side{
 	background-color: #2A2D2C;
 	width: 30%;
-	display: flex;
-	justify-content: center;
 	padding-top: 10%;
 }
 .left-side-text-pair{
@@ -41,29 +39,27 @@ a{
 }
 .right-side{
 	background-color: #2C2F2E;
-	width: 70%;
-	padding-top: 13%;
+	width: 100%;
+	padding-top: 5%;
 }
 .right-side-text-pair{
 	background-color: #2A2D2C;
-	width: 70%;
+	width: 100%;
 }
 .right-side-text-odd{
 	background-color: #2C2F2E;
-	width: 70%;	
+	width: 100%;	
 }
 .right-side-container{
 	padding: 9%;
 }
 .avatar-container{
-	width: 55%;
-	height: 45%;
-	justify-content: center;
-	align-items: center;
+
 }
 .avatar-picture{
 	width: 100%;
 	height: 100%;
+    aspect-ratio: 1/1;
 	min-width: 170px;
     border-radius: 50%;
 }
