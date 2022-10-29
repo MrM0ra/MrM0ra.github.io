@@ -23,3 +23,15 @@ function openModal(detail = "Nothing here... weird"){
   modal.style.display = "block";
   modalText.innerHTML = detail;
 }
+
+const dialogModal = document.querySelector('#modal')
+const openModalBtn = document.querySelector('.open-btn')
+const closeModalBtn = document.querySelector('.close-btn')
+
+openModalBtn.addEventListener('click', () => {
+    dialogModal.showModal()
+})
+
+closeModalBtn.addEventListener('click', () => {
+    dialogModal.close()
+})
