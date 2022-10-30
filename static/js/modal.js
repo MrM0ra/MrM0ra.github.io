@@ -24,14 +24,22 @@ function openModal(detail = "Nothing here... weird"){
   modalText.innerHTML = detail;
 }
 
+const mineProject = document.querySelector('.project-container')
+const mineModal = document.querySelector('#minesweeper-modal')
+
 const dialogModal = document.querySelector('#modal')
 const openModalBtn = document.querySelector('.open-btn')
-const closeModalBtn = document.querySelector('.close-btn')
+const closeModalBtn = document.querySelectorAll('.close-btn')
+
+closeModalBtn.forEach(btn => btn.addEventListener('click', () => {
+    dialogModal.close()
+    mineModal.close()
+}))
+
+mineProject.addEventListener('click', () => {
+    mineModal.showModal()
+})
 
 openModalBtn.addEventListener('click', () => {
     dialogModal.showModal()
-})
-
-closeModalBtn.addEventListener('click', () => {
-    dialogModal.close()
 })

@@ -22,6 +22,10 @@ a{
 .smallest{
 	font-size: 90%;
 }
+#minesweeper-modal{
+    background-color: #2A2D2C;
+    max-width: 50ch;
+}
 .left-side{
 	background-color: #2A2D2C;
 	width: 30%;
