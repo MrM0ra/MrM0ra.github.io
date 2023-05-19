@@ -211,51 +211,20 @@
 		<div class="right-side-text-pair">
 			<div class="right-side-container">
 				<div class="skill-container">
-                    <div class="project-container">
-                        <image style="width: 80%;" src="./static/minesweeper.jpg" alt="Minesweeper game"></image>
-                        <span class="specification-text smallest">Minesweper game with java</span>
+					<div class="project-container" id="mine">
+                       		<image style="width: 80%;" src="./static/minesweeper.jpg" alt="Minesweeper game"></image>
+                       		<span class="specification-text smallest">Minesweper game with java</span>
                     </div>
-					<li onclick="openModal('You clicked on: Java skill')">
-						<span id="right-side-subtitle">
-							<b>java</b>
-                            <button class="open-btn">Abrir</button>
-						</span>
-						<span class="bar">
-							<span class="java"></span>
-						</span>
-					</li>
-					<li onclick="openModal('You clicked on: C# skill')">
-						<span id="right-side-subtitle">
-							<b>c#</b>
-						</span>
-						<span class="bar">
-							<span class="c-sharp"></span>
-						</span>
-					</li>
-					<li onclick="openModal('You clicked on: python skill')">
-						<span id="right-side-subtitle">
-							<b>python</b>
-						</span>
-						<span class="bar">
-							<span class="python"></span>
-						</span>
-					</li>
-					<li onclick="openModal('You clicked on: javascript skill')">
-						<span id="right-side-subtitle">
-							<b>javascript</b>
-						</span>
-						<span class="bar">
-							<span class="js"></span>
-						</span>
-					</li>
-					<li onclick="openModal('You clicked on: illustrator skill')">
-						<span id="right-side-subtitle">
-							<b>illustrator</b>
-						</span>
-						<span class="bar">
-							<span class="ilus"></span>
-						</span>
-					</li>
+
+                    <div class="project-container" id="tictactoe">
+                        <image style="width: 80%; height: 70%;" src="./static/tictactoe.png" alt="TicTacToe game"></image>
+                        <span class="specification-text smallest">TicTacToe game with React Native</span>
+                    </div>
+
+                    <div class="project-container" id="connect4">
+                        <image style="width: 80%;" src="./static/connect4.png" alt="Connect4 game"></image>
+                        <span class="specification-text smallest">Connect 4 game with React</span>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -270,25 +239,40 @@
             <p class="specification-text smallest">
                 Minesweeper game developed on eclipse using JavaFX and Scene Builder. The game is in spanish but can be easily translated to any language. It has 3 dificulty levels
             </p>
-            <p><a href="https://youtu.be/CY-Eb6WV4Dg">You can see the demo here</a></p>
-            <button class="close-btn">Close</button>
+            <p><a href="https://youtu.be/CY-Eb6WV4Dg" target="_blank">You can see the demo here</a></p>
+            <button class="close-btn mineclose">Close</button>
         </div>
     </dialog>
 
-    <dialog id="modal">
-        <h2>An interesting title</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit corrupti, beatae accusamus quos quisquam dolore dolores, possimus dolorum nihil harum voluptatibus culpa vero blanditiis sed mollitia repellat vitae eaque.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit corrupti, beatae accusamus quos quisquam dolore dolores, possimus dolorum nihil harum voluptatibus culpa vero blanditiis sed mollitia repellat vitae eaque.</p>
-        <button class="close-btn">Close</button>
+    <dialog id="TicTacToe-modal">
+    	<div style="display: grid; place-items: center; padding:15px 15px 15px 15px;">
+            <span id="right_title">
+                <p class="specification-text smallest">
+                    TicTacToe game with React Native
+                </p>
+            </span>
+            <p class="specification-text smallest">
+                TicTacToe game developed on VS code using React Native
+            </p>
+            <p><a href="https://www.youtube.com/shorts/kPzeTBCjUkc" target="_blank">You can see the demo here</a></p>
+            <button class="close-btn ticlose">Close</button>
+        </div>
     </dialog>
-	<!-- The Modal -->
-	<div id="modal" class="modal">
-		<!-- Modal content -->
-  		<div class="modal-content">
-	    	<span class="close">&times;</span>
-    		<p id="modal_text">Some text in the Modal..</p>
-  		</div>
-	</div>
+
+     <dialog id="connect4-modal">
+    	<div style="display: grid; place-items: center; padding:15px 15px 15px 15px;">
+            <span id="right_title">
+                <p class="specification-text smallest">
+                    Connect 4 game with React
+                </p>
+            </span>
+            <p class="specification-text smallest">
+                Connect 4 game developed on VS code using React
+            </p>
+            <p><a href="https://www.youtube.com/watch?v=Kswgpqvcdu0" target="_blank">You can see the demo here</a></p>
+            <button class="close-btn connect4close">Close</button>
+        </div>
+    </dialog>
 	<script src="static/js/modal.js"></script>
 	</div>
 </body>

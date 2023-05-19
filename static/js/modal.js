@@ -1,45 +1,35 @@
-// Get the modal
-var modal = document.getElementById("modal");
-
-// Get the modal text to display
-var modalText = document.getElementById("modal_text");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-function openModal(detail = "Nothing here... weird"){
-  modal.style.display = "block";
-  modalText.innerHTML = detail;
-}
-
-const mineProject = document.querySelector('.project-container')
+const mineProject = document.querySelector('#mine')
 const mineModal = document.querySelector('#minesweeper-modal')
-
-const dialogModal = document.querySelector('#modal')
-const openModalBtn = document.querySelector('.open-btn')
-const closeModalBtn = document.querySelectorAll('.close-btn')
-
-closeModalBtn.forEach(btn => btn.addEventListener('click', () => {
-    dialogModal.close()
-    mineModal.close()
-}))
+const mineClose = document.querySelector('.mineclose')
 
 mineProject.addEventListener('click', () => {
     mineModal.showModal()
 })
 
-openModalBtn.addEventListener('click', () => {
-    dialogModal.showModal()
+mineClose.addEventListener('click', () => {
+  mineModal.close()
+})
+
+const ticProject = document.querySelector('#tictactoe')
+const ticModal = document.querySelector('#TicTacToe-modal')
+const ticClose = document.querySelector('.ticlose')
+
+ticProject.addEventListener('click', () => {
+    ticModal.showModal()
+})
+
+ticClose.addEventListener('click', () => {
+  ticModal.close()
+})
+
+const connectProject = document.querySelector('#connect4')
+const connectModal = document.querySelector('#connect4-modal')
+const connectClose = document.querySelector('.connect4close')
+
+connectProject.addEventListener('click', () => {
+    connectModal.showModal()
+})
+
+connectClose.addEventListener('click', () => {
+  connectModal.close()
 })

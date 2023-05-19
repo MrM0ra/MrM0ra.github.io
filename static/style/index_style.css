@@ -16,15 +16,15 @@ a{
 	color: white;
 	text-decoration: none;
 }
+dialog{
+    background-color: #2A2D2C;
+    max-width: 50ch;
+}
 .main-container{
 	/*width: 100vw;*/
 }
 .smallest{
 	font-size: 90%;
-}
-#minesweeper-modal{
-    background-color: #2A2D2C;
-    max-width: 50ch;
 }
 .left-side{
 	background-color: #2A2D2C;
