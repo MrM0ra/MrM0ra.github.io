@@ -41,6 +41,18 @@ dialog{
 	width: 30%;
 	justify-content: flex-start;	
 }
+.project-img{
+  height: 130px;
+  width: 150px;
+}
+.project-img > img{
+  height: 100%;
+  width: 100%;
+}
+.priject-container{
+	display: grid;
+	place-items: center;
+}
 .right-side{
 	background-color: #2C2F2E;
 	width: 100%;
@@ -185,7 +197,7 @@ dialog{
 .skill-container{
 	width: 80%;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
   	grid-gap: 10%;
   	grid-auto-rows: minmax(100px, auto);
 }
