@@ -11,20 +11,20 @@ import {AuthProvider} from '../src/context/UserContext';
 
 function App() {
 
-  return (
-    <AuthProvider>
-      <BrowserRouter basename={window.location.pathname || ''}/*style={styles.body}*/>
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/chat"  component={Chat}/>
-          <Route exact path="/register"  component={Registry}/>
-        </Switch>
-      </BrowserRouter>
-    </AuthProvider>
-  );
+	return (
+		<AuthProvider>
+			<BrowserRouter basename={window.location.pathname || ''}/*style={styles.body}*/>
+				<Switch>
+					<Route exact path="/">
+						<Redirect to="/login" />
+					</Route>
+					<Route exact path="/login" component={Login}/>
+					<Route exact path="/chat"	component={Chat}/>
+					<Route exact path="/register"	component={Registry}/>
+				</Switch>
+			</BrowserRouter>
+		</AuthProvider>
+	);
 }
 
 export default App;
