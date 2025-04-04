@@ -49,10 +49,6 @@ dialog{
   height: 100%;
   width: 100%;
 }
-.priject-container{
-	display: grid;
-	place-items: center;
-}
 .right-side{
 	background-color: #2C2F2E;
 	width: 100%;
